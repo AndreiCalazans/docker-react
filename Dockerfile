@@ -1,6 +1,6 @@
 FROM node:alpine as builder
 
-WORKDIR /app
+WORKDIR "/app"
 
 COPY package.json .
 
@@ -12,7 +12,6 @@ RUN npm run build
 
 FROM nginx
 
-# Expose 80 necessary for Elasticbeanstalk.
 EXPOSE 80
 
 COPY --from=builder /app/build /usr/share/nginx/html
